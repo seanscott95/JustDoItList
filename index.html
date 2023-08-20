@@ -8,58 +8,70 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
         integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="style.css">
     <script src="index.js" defer></script>
     <title>Just Do It List</title>
 </head>
 
 <body>
-    <header>
-        <i class="fa fa-list" aria-hidden="true"></i>
-        <h1>Just Do It List</h1>
-    </header>
-    <section>
-        <form>
-            <div>
-                <input
-                    type="text"
-                    class="formInput"
-                    id="itemInput"
-                    name="item"
-                    placeholder="Enter Item"
-                />
-                <button type="submit">Add Item <i class="fa-solid fa-plus"></i></button>
-            </div>
-        </form>
-    </section>
-    <section>
-        <ul id="itemList" class="items">
-            <li>
-                Apples
-                <button class="removeItem btnLink textRed">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </li>
-            <li>
-                Orange Juice
-                <button class="removeItem btnLink textRed">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </li>
-            <li>
-                Oreos
-                <button class="removeItem btnLink textRed">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </li>
-            <li>
-                Milk
-                <button class="removeItem btnLink textRed">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </li>
-        </ul>
-        <button id="clear" class="btnClear">Clear All</button>
-    </section>
+    <div class="container">
+
+        <header>
+            <i class="fa fa-list" aria-hidden="true"></i>
+            <h1>Just Do It List</h1>
+        </header>
+        <section>
+            <form id="itemForm">
+                <div>
+                    <input
+                        type="text"
+                        class="formInput"
+                        id="itemInput"
+                        name="item"
+                        placeholder="Enter Item"
+                    />
+                    <button type="submit" class="btn">Add Item <i class="fa-solid fa-plus"></i></button>
+                </div>
+            </form>
+        </section>
+        <section class="filter">
+            <input
+                type="text"
+                class="formInputFilter"
+                id="filter"
+                placeholder="Filter Items"
+            />
+        </section>
+        <section>
+            <ul id="itemList" class="items">
+                <li>
+                    Apples
+                    <button class="removeItem btnLink textRed">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </li>
+                <li>
+                    Orange Juice
+                    <button class="removeItem btnLink textRed">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </li>
+                <li>
+                    Oreos
+                    <button class="removeItem btnLink textRed">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </li>
+                <li>
+                    Milk
+                    <button class="removeItem btnLink textRed">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </li>
+            </ul>
+            <button id="clear" class="btnClear">Clear All</button>
+        </section>
+    </div>
 </body>
 
 </html>
