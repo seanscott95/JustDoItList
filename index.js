@@ -18,12 +18,7 @@ const addItem = (e) => {
         itemToEdit.innerText = newItem;
 
         // Creating new delete button for the updated item
-        const itemBtn = document.createElement('button');
-        itemBtn.className = 'removeItem btnLink textRed';
-
-        const itemIcon = document.createElement('i');
-        itemIcon.className = 'fa-solid fa-xmark';
-        itemBtn.append(itemIcon);
+        const itemBtn = createBtn('removeItem btnLink textRed');
 
         itemToEdit.append(itemBtn);
 
@@ -33,8 +28,7 @@ const addItem = (e) => {
         const addButton = document.createElement('button');
         addButton.className = 'btn';
 
-        const icon = document.createElement('i');
-        icon.className = 'fa-solid fa-plus';
+        const icon = createIcon('fa-solid fa-plus');
 
         addButton.append('Add Item ', icon);
 
@@ -55,13 +49,7 @@ const addItem = (e) => {
 
     const li = document.createElement('li');
 
-    const btn = document.createElement('button');
-    btn.className = 'removeItem btnLink textRed';
-
-    const icon = document.createElement('i');
-    icon.className = 'fa-solid fa-xmark';
-
-    btn.append(icon);
+    const btn = createBtn('removeItem btnLink textRed');
     li.append(newItem, btn);
     itemListEl.append(li);
 
@@ -93,8 +81,7 @@ const editItem = (item) => {
     updateButton.className = 'btn';
     updateButton.style.backgroundColor = '#228B22';
 
-    const icon = document.createElement('i');
-    icon.className = 'fa-solid fa-pen';
+    const icon = createIcon('fa-solid fa-pen');
 
     updateButton.append(icon, ' Update Item');
 
@@ -145,6 +132,20 @@ const checkIfItemExists = (item) => {
     });
 
     return result;
+};
+
+// Utility Functions
+const createBtn = (classes) => {
+    const btn = document.createElement('button');
+    btn.className = classes;
+    const icon = createIcon('fa-solid fa-xmark')
+    btn.append(icon)
+    return btn;
+};
+const createIcon = (classes) => {
+    const icon = document.createElement('i');
+    icon.className = classes;
+    return icon;
 };
 
 const init = () => {
