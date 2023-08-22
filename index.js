@@ -1,6 +1,7 @@
 const formEl = document.getElementById('itemForm');
 const itemInputEl = document.getElementById('itemInput');
 const itemListEl = document.getElementById('itemList');
+const btnClearEl = document.getElementById('clear');
 
 // Adds the item inputted to the list
 const addItem = (e) => {
@@ -22,4 +23,14 @@ const addItem = (e) => {
     itemListEl.append(li);
 };
 
-formEl.addEventListener('submit', addItem);
+const clearAllItems = () => {
+    while(itemListEl.firstChild) itemListEl.removeChild(itemListEl.firstChild);
+};
+
+
+const init = () => {
+    formEl.addEventListener('submit', addItem);
+    btnClearEl.addEventListener('click', clearAllItems)
+};
+
+init();
