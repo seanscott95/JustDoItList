@@ -9,6 +9,41 @@ let isEditMode = false;
 const addItem = (e) => {
     e.preventDefault();
 
+    if (isEditMode) {
+        const itemToEdit = itemListEl.querySelector('.editMode');
+        itemToEdit.innerText = itemInputEl.value;
+
+        // Creating new delete button for the updated item
+        const itemBtn = document.createElement('button');
+        itemBtn.className = 'removeItem btnLink textRed';
+
+        const itemIcon = document.createElement('i');
+        itemIcon.className = 'fa-solid fa-xmark';
+        itemBtn.append(itemIcon);
+
+        itemToEdit.append(itemBtn);
+
+        itemToEdit.classList.remove('editMode');
+
+        // Creating the Add Item Button that will display again after editing
+        const addButton = document.createElement('button');
+        addButton.className = 'btn';
+
+        const icon = document.createElement('i');
+        icon.className = 'fa-solid fa-plus';
+
+        addButton.append('Add Item ', icon);
+
+        // Replaces the Add Item button with an Update Item Button
+        const formBtn = formEl.querySelector('button');
+        formBtn.replaceWith(addButton);
+        
+        isEditMode = false;
+        itemInputEl.value = '';
+
+        return;
+    };
+
     const newItem = itemInputEl.value.trim();
     if (newItem === '') return;
 
