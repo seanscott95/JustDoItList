@@ -9,9 +9,13 @@ let isEditMode = false;
 const addItem = (e) => {
     e.preventDefault();
 
+    const newItem = itemInputEl.value.trim();
+    if (newItem === '') return;
+    
     if (isEditMode) {
         const itemToEdit = itemListEl.querySelector('.editMode');
-        itemToEdit.innerText = itemInputEl.value;
+        
+        itemToEdit.innerText = newItem;
 
         // Creating new delete button for the updated item
         const itemBtn = document.createElement('button');
@@ -37,15 +41,17 @@ const addItem = (e) => {
         // Replaces the Add Item button with an Update Item Button
         const formBtn = formEl.querySelector('button');
         formBtn.replaceWith(addButton);
-        
+
         isEditMode = false;
         itemInputEl.value = '';
 
         return;
     };
 
-    const newItem = itemInputEl.value.trim();
-    if (newItem === '') return;
+    if (checkIfItemExists(newItem)) {
+        alert(`Item ${newItem} already exists`);
+        return;
+    };
 
     const li = document.createElement('li');
 
@@ -126,6 +132,19 @@ const filterItem = (e) => {
             item.style.display = 'none';
         };
     });
+};
+
+const checkIfItemExists = (item) => {
+    const listItems = itemListEl.querySelectorAll('li');
+
+    let result = false;
+    Array.from(listItems).forEach((i) => {
+        if (item.toLowerCase() === i.innerText.toLowerCase()) {
+            result = true;
+        };
+    });
+
+    return result;
 };
 
 const init = () => {
